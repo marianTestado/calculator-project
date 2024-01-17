@@ -124,6 +124,7 @@ btnDecimal.addEventListener('click', () => {
 });
 
 
+
 // Operator Buttons
 
 const btnPlus = document.querySelector('#plus');
@@ -228,3 +229,89 @@ function equalValue()
 
     
 }
+
+document.addEventListener('keydown', (event) => {
+    const key = event.key.toLowerCase();
+    console.log(key);
+    if(!isNaN(key))
+    {
+        displayValue.push(key);
+        display.innerText = displayValue.join('');
+        
+    }
+    else
+    {
+        if(key == '/')
+        {
+            if (firstCalcNumber) {
+                secondCalcNumber = parseFloat(displayValue.join(''));
+                firstCalcNumber = operate(firstCalcNumber, secondCalcNumber, calcOperator);
+                display.innerText = firstCalcNumber;
+                calcOperator = '/';
+                displayValue.splice(0, displayValue.length);
+            } else {
+                firstCalcNumber = parseFloat(displayValue.join(''));
+                calcOperator = '/';
+                displayValue.splice(0, displayValue.length);
+            }
+        }
+        else
+        {
+            if(key == '*')
+            {
+                if (firstCalcNumber) {
+                    secondCalcNumber = parseFloat(displayValue.join(''));
+                    firstCalcNumber = operate(firstCalcNumber, secondCalcNumber, calcOperator);
+                    display.innerText = firstCalcNumber;
+                    calcOperator = '*';
+                    displayValue.splice(0, displayValue.length);
+                } else {
+                    firstCalcNumber = parseFloat(displayValue.join(''));
+                    calcOperator = '*';
+                    displayValue.splice(0, displayValue.length);
+                }
+
+            }
+            else
+            if(key == '-')
+            {
+                if (firstCalcNumber) {
+                    secondCalcNumber = parseFloat(displayValue.join(''));
+                    firstCalcNumber = operate(firstCalcNumber, secondCalcNumber, calcOperator);
+                    display.innerText = firstCalcNumber;
+                    calcOperator = '-';
+                    displayValue.splice(0, displayValue.length);
+                } else {
+                    firstCalcNumber = parseFloat(displayValue.join(''));
+                    calcOperator = '-';
+                    displayValue.splice(0, displayValue.length);
+                }
+            }
+            else
+            {
+                if(key == '+')
+                {
+                    if (firstCalcNumber) {
+                        secondCalcNumber = parseFloat(displayValue.join(''));
+                        firstCalcNumber = operate(firstCalcNumber, secondCalcNumber, calcOperator);
+                        display.innerText = firstCalcNumber;
+                        calcOperator = '+';
+                        displayValue.splice(0, displayValue.length);
+                    } else {
+                        firstCalcNumber = parseFloat(displayValue.join(''));
+                        calcOperator = '+';
+                        displayValue.splice(0, displayValue.length);
+                    }
+                }
+                else
+                {
+                    if(key == 'enter')
+                    {
+                        equalValue();
+                    }
+                }
+            }
+        }
+    }
+  });
+
