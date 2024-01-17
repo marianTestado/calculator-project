@@ -198,6 +198,19 @@ btnClear.addEventListener('click', () =>{
     display.innerText = 0;
 })
 
+const btnBack = document.querySelector('#backspace');
+btnBack.addEventListener('click', () =>{
+    if(displayValue.length > 1)
+    {
+        displayValue.splice((displayValue.length - 1), 1);
+        display.innerText = parseFloat(displayValue.join(''));  
+    }
+    else
+    {
+        display.innerText = 0;
+    }
+})
+
 function equalValue()
 {
   
