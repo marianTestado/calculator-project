@@ -232,7 +232,6 @@ function equalValue()
 
 document.addEventListener('keydown', (event) => {
     const key = event.key.toLowerCase();
-    console.log(key);
     if(!isNaN(key))
     {
         displayValue.push(key);
@@ -308,6 +307,42 @@ document.addEventListener('keydown', (event) => {
                     if(key == 'enter')
                     {
                         equalValue();
+                    }
+                    else
+                    {
+                        if(key == '.')
+                        {
+                            if (!displayValue.includes('.')) {
+                                displayValue.push('.');
+                                display.innerText = displayValue.join('');
+                            }
+                        }
+                        else
+                        {
+                            if(key == 'escape')
+                            {
+                                displayValue.splice(0, displayValue.length);
+                                firstCalcNumber = false;
+                                secondCalcNumber = false;
+                                calcOperator = 0;
+                                display.innerText = 0;
+                            }
+                            else
+                            {
+                                if(key == 'backspace')
+                                {
+                                    if(displayValue.length > 1)
+                                    {
+                                        displayValue.splice((displayValue.length - 1), 1);
+                                        display.innerText = parseFloat(displayValue.join(''));  
+                                    }
+                                    else
+                                    {
+                                        display.innerText = 0;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
